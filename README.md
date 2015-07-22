@@ -51,7 +51,7 @@ let myTable = table$().classId("table table-striped").innerHtml(
 )
 ```
 
-And now you can put just created table it into the html body.
+And now you can put just created table into the html body.
 
 ```swift
 let page = html$ (
