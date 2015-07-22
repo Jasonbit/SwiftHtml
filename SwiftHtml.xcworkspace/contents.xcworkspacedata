@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "global">
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:HttpServer/../LICENSE">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:HttpServer/HttpServer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftHtml/SwiftHtml.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftHtmlDemo/SwiftHtmlDemo.xcodeproj">
+   </FileRef>
+</Workspace>
