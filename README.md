@@ -1,6 +1,6 @@
 ### What is a SwiftHtml ?
 
-It is a library for server-side web programming using the Swift 2.0 programming language (https://developer.apple.com/swift)
+Helpful library for the dynamic creation of HTML using the Swift 2.0 programming language (https://developer.apple.com/swift)
 
 ### How can I start ?
 
