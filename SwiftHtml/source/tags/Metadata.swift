@@ -190,6 +190,7 @@ public enum HtmlMetaName : String {
 	case description
 	case generator
 	case keywords
+	case viewport
 }
 
 public class meta$ : HtmlElement {

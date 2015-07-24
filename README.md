@@ -22,6 +22,18 @@ server.run()
 
 ```
 
+### How it works?
+
+```swift
+h1$("Hello, ", mark$("World"), " !").style("text-align:center")
+```
+
+SwiftHtml translates into
+
+```html
+<h1 style="text-align:center">Hello, <mark>World</mark> !</h1>
+```
+
 ### How to create a context dynamically
 
 With the SwiftHtml you can create a web page dynamically using Swift closures.
