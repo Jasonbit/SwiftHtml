@@ -68,7 +68,8 @@ public class noscript$ : HtmlControl { override var name: String { return "noscr
 
 public class embed$ : HtmlControl {
 	override var name: String { return "embed" }
-	
+	override var hasEndTag: Bool { return false }
+
 	enum Attribute : HtmlAttribute {
 		case height(Int)
 		case src(String)
@@ -174,6 +175,7 @@ public class object$ : HtmlControl {
 
 public class param$ : HtmlElement {
 	override var name: String { return "param" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case name(String)

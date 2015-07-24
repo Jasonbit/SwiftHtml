@@ -153,6 +153,7 @@ public enum HtmlInputType: String {
 
 public class input$ : HtmlControl {
 	override var name: String { return "input" }
+	override var hasEndTag: Bool { return false }
 	
 	enum EventAttribute : HtmlAttribute {
 		case onchange(String)
@@ -863,6 +864,7 @@ public enum HtmlKeyType : String {
 
 public class keygen$ : HtmlControl {
 	override var name: String { return "keygen" }
+	override var hasEndTag: Bool { return false }
 	
 	enum EventAttribute : HtmlAttribute {
 		case onreset(String)

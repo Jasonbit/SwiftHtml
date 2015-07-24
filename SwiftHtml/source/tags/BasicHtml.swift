@@ -85,9 +85,16 @@ public class h6$ : HtmlControl { override var name: String { return "h6" } }
 
 public class p$ : HtmlControl { override var name: String { return "p" } }
 
-public class br$ : HtmlElement { override var name: String { return "br" } }
+public class br$ : HtmlElement {
+	override var name: String { return "br" }
+	override var hasEndTag: Bool { return false }
+}
 
-public class hr$ : HtmlControl { override var name: String { return "hr" } }
+public class hr$ : HtmlControl {
+	override var name: String { return "hr" }
+	override var hasEndTag: Bool { return false }
+}
+
 
 
 //---------------------------- Formatting -----------------------------------
@@ -343,5 +350,10 @@ public class u$ : HtmlControl { override var name: String { return "u" } }
 
 public class var$ : HtmlControl { override var name: String { return "var" } }
 
-public class wbr$ : HtmlControl { override var name: String { return "wbr" } }
+public class wbr$ : HtmlControl {
+	override var name: String { return "wbr" }
+	override var hasEndTag: Bool { return false }
+}
+
+
 

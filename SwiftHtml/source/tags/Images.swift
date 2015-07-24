@@ -20,6 +20,7 @@ public enum CrossOrigin : String {
 
 public class img$ : HtmlControl {
 	override var name: String { return "img" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case alt(String)
@@ -121,6 +122,7 @@ public enum HtmlAreaShape : String {
 
 public class area$ : HtmlControl {
 	override var name: String { return "area" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case alt(String)

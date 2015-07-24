@@ -359,6 +359,7 @@ public class tfoot$ : HtmlControl { override var name: String { return "tfoot" }
 
 public class col$ : HtmlControl {
 	override var name: String { return "col" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case span(Int)

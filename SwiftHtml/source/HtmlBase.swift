@@ -23,3 +23,4 @@ protocol HtmlAttribute {
 func attributeString(key key: String, value: String) -> String {
 	return "\(key)=\"\(value)\""
 }
+

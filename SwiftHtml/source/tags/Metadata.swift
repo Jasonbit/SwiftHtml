@@ -27,6 +27,7 @@ public enum HtmlTarget: String {
 
 public class base$ : HtmlElement {
 	override var name: String { return "base" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case href(String)
@@ -93,6 +94,7 @@ public enum HtmlRel : String {
 
 public class link$ : HtmlControl {
 	override var name: String { return "link" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case crossorigin(HtmlCrossOrgin)
@@ -192,6 +194,7 @@ public enum HtmlMetaName : String {
 
 public class meta$ : HtmlElement {
 	override var name: String { return "meta" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case charset(String)

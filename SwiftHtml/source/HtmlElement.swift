@@ -75,6 +75,7 @@ public class HtmlElement: tag$ {
 	var name: String { return "" }
 	var childs = [tag$]()
 	var attributes = [HtmlAttribute]()
+	var hasEndTag: Bool { return true }
 	
 	enum Attribute : HtmlAttribute {
 		case accessKey(String)
@@ -98,11 +99,11 @@ public class HtmlElement: tag$ {
 		func toString() -> String {
 			switch self {
 			case accessKey(let key): return attributeString(key: "accesskey", value: key)
-			case aria(let ariaName, let ariaValue): return attributeString(key: "aria-\(ariaName))", value: ariaValue)
+			case aria(let ariaName, let ariaValue): return attributeString(key: "aria-\(ariaName)", value: ariaValue)
 			case classes(let classes): return attributeString(key: "class", value: classes)
 			case contenteditable(let editable): return attributeString(key: "contenteditable", value: editable ? "true": "false")
 			case contextmenu(let contextmenu): return attributeString(key: "contextmenu", value: contextmenu)
-			case data(let dataName, let dataValue): return attributeString(key: "data-\(dataName))", value: dataValue)
+			case data(let dataName, let dataValue): return attributeString(key: "data-\(dataName)", value: dataValue)
 			case dir(let dir): return attributeString(key: "dir", value: dir.rawValue)
 			case draggable(let draggable): return attributeString(key: "draggable", value: draggable ? "true": "false")
 			case dropzone(let dropzone): return attributeString(key: "dropzone", value: dropzone.rawValue)
@@ -170,7 +171,7 @@ public class HtmlElement: tag$ {
 			attribStr = " " + " ".join(attributes.map{$0.toString()})
 			
 		}
-		if childs.count > 0 {
+		if hasEndTag {
 			var output = ""
 			for child in childs {
 				output += child.htmlString
@@ -188,14 +189,17 @@ public class HtmlElement: tag$ {
 	// ---- Inner html ----
 	
 	public func innerHtml (closure: () -> [tag$]) -> Self {
+		assert(self.hasEndTag, "<\(name)> can't have inner HTML!")
 		childs += closure()
 		return self
 	}
 	public func innerHtml (childs: tag$...) -> Self {
+		assert(self.hasEndTag, "<\(name)> can't have inner HTML!")
 		self.childs += childs
 		return self
 	}
 	public func innerHtml(childs: [tag$]) -> Self {
+		assert(self.hasEndTag, "<\(name)> can't have inner HTML!")
 		self.childs += childs
 		return self
 	}
@@ -301,14 +305,17 @@ public class HtmlElement: tag$ {
 public extension HtmlElement {
 	public convenience init (_ closure: () -> [tag$])  {
 		self.init()
+		assert(self.hasEndTag, "<\(name)> can't have inner HTML!")
 		childs += closure()
 	}
 	public convenience init (_ childs: tag$...)  {
 		self.init()
+		assert(self.hasEndTag || childs.count == 0, "<\(name)> can't have inner HTML!")
 		self.childs += childs
 	}
 	public convenience init(_ childs: [tag$])  {
 		self.init()
+		assert(self.hasEndTag, "<\(name)> can't have inner HTML!")
 		self.childs += childs
 	}
 }

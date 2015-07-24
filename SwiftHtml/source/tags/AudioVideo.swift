@@ -78,6 +78,7 @@ public class audio$ : HtmlControl {
 
 public class source$ : HtmlControl {
 	override var name: String { return "source" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case media(String)
@@ -122,6 +123,7 @@ public enum HtmlTrackKind : String {
 
 public class track$ : HtmlControl {
 	override var name: String { return "track" }
+	override var hasEndTag: Bool { return false }
 	
 	enum Attribute : HtmlAttribute {
 		case DEFAULT
