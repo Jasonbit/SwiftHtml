@@ -10,7 +10,7 @@ let page = html$ (
 		title$ ("Hello")
 	),
 	body$ (
-		"Hello world!"
+		"Hello, World!"
 	)
 )
 
@@ -26,6 +26,19 @@ server.run()
 
 ```swift
 h1$("Hello, ", mark$("World"), " !").style("text-align:center")
+```
+
+or
+
+```swift
+h1$()
+	.style("text-align:center")
+	.innerHtml (
+
+		"Hello, ",
+		mark$("World"),
+		" !"
+)
 ```
 
 SwiftHtml translates into
@@ -77,7 +90,7 @@ let page = html$ (
 			.rel(.stylesheet)
 			.href("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"),
 
-		title$ ("Login")
+		title$ ("Users")
 	),
 
 	body$ (
