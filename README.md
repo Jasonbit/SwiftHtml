@@ -22,7 +22,7 @@ server.run()
 
 ```
 
-### How it works?
+### How it works
 
 ```swift
 h1$("Hello, ", mark$("World"), " !").style("text-align:center")
@@ -96,17 +96,4 @@ let page = html$ (
 )
 ```
 
-### If you need styles just put them into dictionary
-
-```swift
-let page = html$ (
-	head$ (
-		style$ (["h1.center":"text-align:center"]),
-	),
-	body$ (
-		h1$("Hello!").classes("center"),
-		h1$("Hello!")
-	)
-)
-```
 
