@@ -76,3 +76,17 @@ let page = html$ (
 )
 ```
 
+### If you need styles just put them into dictionary
+
+```swift
+let page = html$ (
+	head$ (
+		style$ (["h1.center":"text-align:center"]),
+	),
+	body$ (
+		h1$("Hello!").classId("center"),
+		h1$("Hello!")
+	)
+)
+```
+

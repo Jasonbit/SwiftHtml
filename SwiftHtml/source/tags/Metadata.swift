@@ -249,6 +249,13 @@ public class style$ : HtmlElement {
 		}
 	}
 	
+	public convenience init (_ styles: [String:String])  {
+		let styleString = " ".join(styles.map{return "\($0) {\($1)}"})
+		print(styleString)
+		self.init(styleString)
+		self.childs += childs
+	}
+	
 	public func media(media : String) -> Self {
 		attributes.append(Attribute.media(media))
 		return self
