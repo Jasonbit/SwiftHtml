@@ -31,13 +31,8 @@ h1$("Hello, ", mark$("World"), " !").style("text-align:center")
 or
 
 ```swift
-h1$()
-	.style("text-align:center")
-	.innerHtml (
-
-		"Hello, ",
-		mark$("World"),
-		" !"
+h1$().style("text-align:center").innerHtml (
+	"Hello, ",	mark$("World"),	" !"
 )
 ```
 
