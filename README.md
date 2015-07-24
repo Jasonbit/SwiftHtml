@@ -27,7 +27,7 @@ server.run()
 With the SwiftHtml you can create a web page dynamically using Swift closures.
 
 ```swift
-let myTable = table$().classId("table table-striped").innerHtml(
+let myTable = table$().classes("table", "table-striped").innerHtml(
 	thead$ (
 		tr$ (
 			th$("First name"),
@@ -84,7 +84,7 @@ let page = html$ (
 		style$ (["h1.center":"text-align:center"]),
 	),
 	body$ (
-		h1$("Hello!").classId("center"),
+		h1$("Hello!").classes("center"),
 		h1$("Hello!")
 	)
 )

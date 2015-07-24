@@ -16,6 +16,59 @@ public enum HtmlDir: String {
 	case auto
 }
 
+public enum HtmlDropzone: String {
+	case copy
+	case move
+	case link
+}
+
+public enum HtmlAria: String {
+	
+	//Global States and Properties
+	
+	case atomic
+	case busy
+	case controls
+	case describedby
+	case disabled
+	case dropeffect
+	case flowto
+	case grabbed
+	case haspopup
+	case hidden
+	case invalid
+	case label
+	case labelledby
+	case live
+	case owns
+	case relevant
+	
+	// Widget Attributes
+	
+	case autocomplete
+	case checked
+	case expanded
+	case level
+	case multiline
+	case multiselectable
+	case orientation
+	case pressed
+	case readonly
+	case required
+	case selected
+	case sort
+	case valuemax
+	case valuemin
+	case valuenow
+	case valuetext
+	
+	
+	// Relationship Attributes
+	
+	case activedescendant
+	case posinset
+	case setsize
+}
 
 public class HtmlElement: tag$ {
 	
@@ -25,9 +78,14 @@ public class HtmlElement: tag$ {
 	
 	enum Attribute : HtmlAttribute {
 		case accessKey(String)
-		case classId(String)        // class
+		case aria(HtmlAria,String)
+		case classes(String)        // class
 		case contenteditable(Bool)
+		case contextmenu(String)
+		case data(String,String)
 		case dir(HtmlDir)
+		case draggable(Bool)
+		case dropzone(HtmlDropzone)
 		case hidden
 		case id(String)
 		case lang(String)
@@ -40,9 +98,14 @@ public class HtmlElement: tag$ {
 		func toString() -> String {
 			switch self {
 			case accessKey(let key): return attributeString(key: "accesskey", value: key)
-			case classId(let classId): return attributeString(key: "class", value: classId)
+			case aria(let ariaName, let ariaValue): return attributeString(key: "aria-\(ariaName))", value: ariaValue)
+			case classes(let classes): return attributeString(key: "class", value: classes)
 			case contenteditable(let editable): return attributeString(key: "contenteditable", value: editable ? "true": "false")
+			case contextmenu(let contextmenu): return attributeString(key: "contextmenu", value: contextmenu)
+			case data(let dataName, let dataValue): return attributeString(key: "data-\(dataName))", value: dataValue)
 			case dir(let dir): return attributeString(key: "dir", value: dir.rawValue)
+			case draggable(let draggable): return attributeString(key: "draggable", value: draggable ? "true": "false")
+			case dropzone(let dropzone): return attributeString(key: "dropzone", value: dropzone.rawValue)
 			case hidden: return "hidden"
 			case id(let id): return attributeString(key: "id", value: id)
 			case lang(let lang): return attributeString(key: "lang", value: lang)
@@ -144,8 +207,18 @@ public class HtmlElement: tag$ {
 		return self
 	}
 	
-	public func classId(classId: String) -> Self {
-		attributes.append(Attribute.classId(classId))
+	
+	public func aria(name: HtmlAria, value: String) -> Self {
+		attributes.append(Attribute.aria(name, value))
+		return self
+	}
+	
+	public func aria(name: HtmlAria, value: Bool) -> Self {
+		return aria(name, value: (value ? "true" : "false"))
+	}
+	
+	public func classes(classes: String...) -> Self {
+		attributes.append(Attribute.classes(" ".join(classes)))
 		return self
 	}
 	
@@ -154,18 +227,43 @@ public class HtmlElement: tag$ {
 		return self
 	}
 	
+	public func contextmenu(contextmenu: String) -> Self {
+		attributes.append(Attribute.contextmenu(contextmenu))
+		return self
+	}
+	
+	
+	public func data(name: String, value: String) -> Self {
+		attributes.append(Attribute.data(name, value))
+		return self
+	}
+	
+	public func data(name: String, value: Bool) -> Self {
+		return data(name, value: (value ? "true" : "false"))
+	}
+
 	public func dir(dir: HtmlDir) -> Self {
 		attributes.append(Attribute.dir(dir))
 		return self
 	}
 	
-	public func hidden() -> Self {
-		attributes.append(Attribute.hidden)
+	public func draggable(draggable: Bool) -> Self {
+		attributes.append(Attribute.draggable(draggable))
+		return self
+	}
+
+	public func dropzone(dropzone: HtmlDropzone) -> Self {
+		attributes.append(Attribute.dropzone(dropzone))
 		return self
 	}
 	
 	public func id(id: String) -> Self {
 		attributes.append(Attribute.id(id))
+		return self
+	}
+	
+	public func hidden() -> Self {
+		attributes.append(Attribute.hidden)
 		return self
 	}
 	

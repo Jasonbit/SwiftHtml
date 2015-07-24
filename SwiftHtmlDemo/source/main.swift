@@ -15,15 +15,15 @@ let myModalContent: [tag$] =
 [
 	// ---- header ----
 	div$()
-		.classId("panel-heading")
+		.classes("panel-heading")
 		.innerHtml (
 			
-			h3$("Sign In").classId("panel-title")
+			h3$("Sign In").classes("panel-title")
 	),
 	
 	// ----- body -----
 	div$()
-		.classId("panel-body")
+		.classes("panel-body")
 		.innerHtml (
 			
 			form$()
@@ -34,24 +34,24 @@ let myModalContent: [tag$] =
 					fieldset$ (
 						
 						div$()
-							.classId("form-group")
+							.classes("form-group")
 							.innerHtml (
 								
-								input$().classId("form-control").placeholder("E-mail").name("email").type(.password).autofocus()
+								input$().classes("form-control").placeholder("E-mail").name("email").type(.password).autofocus()
 						),
 						
 						div$()
-							.classId("form-group")
+							.classes("form-group")
 							.innerHtml (
 								
-								input$().classId("form-control").placeholder("Password").name("password").type(.password).autofocus()
+								input$().classes("form-control").placeholder("Password").name("password").type(.password).autofocus()
 						),
 						
 						a$()
 							.href("/login")
 							.innerHtml (
 								
-								button$("Login").type(.submit).classId("btn btn-default")
+								button$("Login").type(.submit).classes("btn btn-default")
 						)
 					)
 			)
@@ -79,16 +79,16 @@ html$ (
 		h1$("Welcome SwiftHtml 0.0.1").style("text-align:center"),
 		
 		div$()
-			.classId("col-md-13")
+			.classes("col-md-13")
 			.innerHtml (
 				
 				div$()
-					.classId("modal-dialog")
+					.classes("modal-dialog")
 					.style("margin-bottom:0")
 					.innerHtml (
 						
 						div$()
-							.classId("modal-content")
+							.classes("modal-content")
 							.style("margin:20")
 							.innerHtml (
 								
@@ -100,7 +100,7 @@ html$ (
 )
 
 let myTable =
-table$().classId("table table-striped").innerHtml(
+table$().classes("table", "table-striped").innerHtml(
 	thead$ (
 		tr$ (
 			th$("First name"),
@@ -142,22 +142,22 @@ html$ (
 	
 	body$ (
 		div$()
-			.classId("modal-dialog")
+			.classes("modal-dialog")
 			.innerHtml (
 				
 				div$()
-					.classId("modal-content")
+					.classes("modal-content")
 					.innerHtml (
 						
 						div$()
-							.classId("panel-body")
+							.classes("panel-body")
 							.innerHtml (
 								
 								h2$("Users Table"),
 								p$("Generated users names"),
 								myTable,
 								a$().href("/").innerHtml (
-									button$("Back").type(.submit).classId("btn btn-default").style("float:right")
+									button$("Back").type(.submit).classes("btn", "btn-default").style("float:right")
 								)
 						)
 				)
