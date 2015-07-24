@@ -5,6 +5,10 @@ Helpful library for the dynamic creation of HTML using the Swift 2.0 programming
 ### How can I start ?
 
 ```swift
+import Foundation
+import HttpServer
+import SwiftHtml
+
 let page = html$ (
 	head$ (
 		title$ ("Hello")
@@ -19,7 +23,6 @@ let server = try! Server(onPort: 8080) { (request , response ) -> () in
 }
 
 server.run()
-
 ```
 
 ### How it works
@@ -96,4 +99,42 @@ let page = html$ (
 )
 ```
 
+### You can easily combine SwiftHtml with Java Script
 
+Create java script file (scripts.js)
+
+```js
+function showName(name) {
+	alert("Your name is " + name.innerHTML);
+}
+```
+
+And now main.swift file
+
+```swift
+import Foundation
+import HttpServer
+import SwiftHtml
+
+let page = html$ (
+	body$ (
+		ul$ (
+			li$("Tom").onClick("showName(this)"),
+			li$("Paul").onClick("showName(this)"),
+			li$("John").onClick("showName(this)")
+		),
+		script$().src("js/scripts.js")
+	)
+)
+
+try! Server(onPort: 8080) { 
+	(request , response ) -> () in
+
+	if let requestUrl = request.url {
+		switch requestUrl {
+		case "/" : response.data = page.htmlData
+		default: response.data = NSMutableData(contentsOfFile: "./public"+requestUrl)
+		}
+	}
+}.run()
+```

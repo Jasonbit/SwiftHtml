@@ -46,19 +46,18 @@ public class HtmlControl : HtmlElement {
 		}
 	}
 	
-	public func onblur(script : String) -> Self { attributes.append(EventAttribute.onblur(script)); return self }
-	public func onfocus(script : String) -> Self { attributes.append(EventAttribute.onfocus(script)); return self }
-	public func onkeydown(script : String) -> Self { attributes.append(EventAttribute.onkeydown(script)); return self }
-	public func onkeypress(script : String) -> Self { attributes.append(EventAttribute.onkeypress(script)); return self }
-	public func onkeyup(script : String) -> Self { attributes.append(EventAttribute.onkeyup(script)); return self }
-	public func onclick(script : String) -> Self { attributes.append(EventAttribute.onclick(script)); return self }
-	public func ondblclick(script : String) -> Self { attributes.append(EventAttribute.ondblclick(script)); return self }
-	public func onmousedown(script : String) -> Self { attributes.append(EventAttribute.onmousedown(script)); return self }
-	public func onmousemove(script : String) -> Self { attributes.append(EventAttribute.onmousemove(script)); return self }
-	public func onmouseout(script : String) -> Self { attributes.append(EventAttribute.onmouseout(script)); return self }
-	public func onmouseover(script : String) -> Self { attributes.append(EventAttribute.onmouseover(script)); return self }
-	public func onmouseup(script : String) -> Self { attributes.append(EventAttribute.onmouseup(script)); return self }
-	public func onscroll(script : String) -> Self { attributes.append(EventAttribute.onscroll(script)); return self }
-	
+	public func onBlur(script : String) -> Self { attributes.append(EventAttribute.onblur(script)); return self }
+	public func onFocus(script : String) -> Self { attributes.append(EventAttribute.onfocus(script)); return self }
+	public func onKeyDown(script : String) -> Self { attributes.append(EventAttribute.onkeydown(script)); return self }
+	public func onKeyPress(script : String) -> Self { attributes.append(EventAttribute.onkeypress(script)); return self }
+	public func onKeyUp(script : String) -> Self { attributes.append(EventAttribute.onkeyup(script)); return self }
+	public func onClick(script : String) -> Self { attributes.append(EventAttribute.onclick(script)); return self }
+	public func onDblClick(script : String) -> Self { attributes.append(EventAttribute.ondblclick(script)); return self }
+	public func onMouseDown(script : String) -> Self { attributes.append(EventAttribute.onmousedown(script)); return self }
+	public func onMouseMove(script : String) -> Self { attributes.append(EventAttribute.onmousemove(script)); return self }
+	public func onMouseOut(script : String) -> Self { attributes.append(EventAttribute.onmouseout(script)); return self }
+	public func onMouseOver(script : String) -> Self { attributes.append(EventAttribute.onmouseover(script)); return self }
+	public func onMouseUp(script : String) -> Self { attributes.append(EventAttribute.onmouseup(script)); return self }
+	public func onScroll(script : String) -> Self { attributes.append(EventAttribute.onscroll(script)); return self }
 	
 }
