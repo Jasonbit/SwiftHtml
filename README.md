@@ -9,9 +9,13 @@ import Foundation
 import HttpServer
 import SwiftHtml
 
-let page = html$ ("Hello, World!")
+var counter = 0
 
-let server = try! HttpServer(onPort: 8080) { (request , response ) -> () in
+var page: html$ {
+	return html$ ("Hello, World \(counter++)!")
+}
+
+try! HttpServer(onPort: 8080) { (request , response ) -> () in
 	response.data = page.htmlData
 }.run()
 ```
@@ -41,53 +45,57 @@ SwiftHtml translates into
 With the SwiftHtml you can create a web page dynamically using Swift closures.
 
 ```swift
-let myTable = table$().classes("table", "table-striped").innerHtml(
-	thead$ (
-		tr$ (
-			th$("First name"),
-			th$("Last name"),
-			th$("Email")
-		)
-	),
-	tbody$ {
-		var body = [tag$]()
-		for i in 1...10 {
-			body.append(
-				tr$ (
-					td$ ("Name \(i)"),
-					td$ ("Last name \(i)"),
-					td$ ("Email \(i)")
-				)
+var myTable: table$ {
+	return table$().classes("table", "table-striped").innerHtml(
+		thead$ (
+			tr$ (
+				th$("First name"),
+				th$("Last name"),
+				th$("Email")
 			)
+		),
+		tbody$ {
+			var body = [tag$]()
+			for i in 1...10 {
+				body.append(
+					tr$ (
+						td$ ("Name \(i)"),
+						td$ ("Last name \(i)"),
+						td$ ("Email \(i)")
+					)
+				)
+			}
+			return body
 		}
-		return body
-	}
-)
+	)
+}
 ```
 
 And now you can put just created table into the html body.
 
 ```swift
-let page = html$ (
-	head$ (
-		meta$()
-			.httpEquiv(.contentType)
-			.content("text/html")
-			.charset("utf-8"),
+var page: html$ {
+	return html$ (
+		head$ (
+			meta$()
+				.httpEquiv(.contentType)
+				.content("text/html")
+				.charset("utf-8"),
 
-		link$()
-			.rel(.stylesheet)
-			.href("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"),
+			link$()
+				.rel(.stylesheet)
+				.href("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"),
 
-		title$ ("Users")
-	),
+			title$ ("Users")
+		),
 
-	body$ (
-		h1$("Users Table").style("text-align:center"),
-		br$(),
-		myTable
+		body$ (
+			h1$("Users Table").style("text-align:center"),
+			br$(),
+			myTable
+		)
 	)
-)
+}
 ```
 
 ### You can easily combine SwiftHtml with Java Script
