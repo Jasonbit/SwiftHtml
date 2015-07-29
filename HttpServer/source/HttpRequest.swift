@@ -32,7 +32,6 @@ public class HttpRequest {
         var sendData = [UInt32](count: Socket.Const.MaxReceiveSize, repeatedValue: 0)
         let count = read(clientSocket.handle, &sendData, Socket.Const.MaxReceiveSize)
         let requestString: String = NSString(bytes: sendData, length: count, encoding: NSASCIIStringEncoding)! as String
-		print(requestString)
         var strLines = requestString.stringByReplacingOccurrencesOfString("\r\n", withString: "\n").componentsSeparatedByString("\n")
         if strLines.count > 0 {
             let httpHeader = strLines[0].componentsSeparatedByString(" ")

@@ -71,23 +71,26 @@ public class HttpServer: Socket {
     
 
     public func run() {
-        while(true) {
-            
-            let clientSocket = try! acceptClient()
-            
-            
-            let request = HttpRequest(clientSocket: clientSocket);
-            let response = HttpResponse(clientSocket: clientSocket)
-            
-            request.readData()
-			
-            try! self.delegate(request: request, response: response)
-            
-            response.mimeType = MimeType(ext: request.url?.pathExtension) ?? MimeType.html
-            
-            response.writeData(request.fields["Accept-Encoding"]?.rangeOfString("deflate") != nil)
+		while(true) {
+			autoreleasepool {
+				
+				let clientSocket = try! acceptClient()
+				
+				
+				let request = HttpRequest(clientSocket: clientSocket);
+				let response = HttpResponse(clientSocket: clientSocket)
+				
+				request.readData()
+				
+				try! self.delegate(request: request, response: response)
+				
+				response.mimeType = MimeType(ext: request.url?.pathExtension) ?? MimeType.html
+				
+				response.writeData(request.fields["Accept-Encoding"]?.rangeOfString("deflate") != nil)
+				
+			}
         }
     }
-    
+	
 }
 

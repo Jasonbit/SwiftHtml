@@ -207,7 +207,7 @@ public class meta$ : HtmlElement {
 			switch self {
 			case charset(let charset): return attributeString(key: "charset", value: charset)
 			case content(let content): return attributeString(key: "content", value: content)
-			case httpEquiv(let httpEquiv): return attributeString(key: "httpEquiv", value: httpEquiv.rawValue)
+			case httpEquiv(let httpEquiv): return attributeString(key: "http-equiv", value: httpEquiv.rawValue)
 			case name(let name): return attributeString(key: "name", value: name.rawValue)
 			}
 		}
