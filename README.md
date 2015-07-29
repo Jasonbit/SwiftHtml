@@ -9,20 +9,11 @@ import Foundation
 import HttpServer
 import SwiftHtml
 
-let page = html$ (
-	head$ (
-		title$ ("Hello")
-	),
-	body$ (
-		"Hello, World!"
-	)
-)
+let page = html$ ("Hello, World!")
 
-let server = try! Server(onPort: 8080) { (request , response ) -> () in
+let server = try! HttpServer(onPort: 8080) { (request , response ) -> () in
 	response.data = page.htmlData
-}
-
-server.run()
+}.run()
 ```
 
 ### How it works
@@ -127,7 +118,7 @@ let page = html$ (
 	)
 )
 
-try! Server(onPort: 8080) { 
+try! HttpServer(onPort: 8080) { 
 	(request , response ) -> () in
 
 	if let requestUrl = request.url {

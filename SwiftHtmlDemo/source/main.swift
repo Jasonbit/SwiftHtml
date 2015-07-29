@@ -166,7 +166,7 @@ html$ (
 )
 
 
-let server = try! Server(onPort: 8080) {
+let server = try! HttpServer(onPort: 8080) {
 	(request , response ) -> () in
 	
 	if let requestUrl = request.url {

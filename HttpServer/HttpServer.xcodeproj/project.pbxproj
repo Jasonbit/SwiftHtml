@@ -11,7 +11,7 @@
 		E5D0395B1B601868003A241A /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D039541B601868003A241A /* HttpRequest.swift */; };
 		E5D0395C1B601868003A241A /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D039551B601868003A241A /* HttpResponse.swift */; };
 		E5D0395E1B601868003A241A /* MimeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D039571B601868003A241A /* MimeTypes.swift */; };
-		E5D0395F1B601868003A241A /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D039581B601868003A241A /* Server.swift */; };
+		E5D0395F1B601868003A241A /* HttpServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D039581B601868003A241A /* HttpServer.swift */; };
 		E5D039601B601868003A241A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D039591B601868003A241A /* Socket.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +21,7 @@
 		E5D039541B601868003A241A /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpRequest.swift; path = source/HttpRequest.swift; sourceTree = "<group>"; };
 		E5D039551B601868003A241A /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpResponse.swift; path = source/HttpResponse.swift; sourceTree = "<group>"; };
 		E5D039571B601868003A241A /* MimeTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MimeTypes.swift; path = source/MimeTypes.swift; sourceTree = "<group>"; };
-		E5D039581B601868003A241A /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = source/Server.swift; sourceTree = "<group>"; };
+		E5D039581B601868003A241A /* HttpServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HttpServer.swift; path = source/HttpServer.swift; sourceTree = "<group>"; };
 		E5D039591B601868003A241A /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = source/Socket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +59,7 @@
 				E5D039541B601868003A241A /* HttpRequest.swift */,
 				E5D039551B601868003A241A /* HttpResponse.swift */,
 				E5D039571B601868003A241A /* MimeTypes.swift */,
-				E5D039581B601868003A241A /* Server.swift */,
+				E5D039581B601868003A241A /* HttpServer.swift */,
 				E5D039591B601868003A241A /* Socket.swift */,
 			);
 			name = Source;
@@ -136,7 +136,7 @@
 				E5D039601B601868003A241A /* Socket.swift in Sources */,
 				E5D0395A1B601868003A241A /* CompressZlib.swift in Sources */,
 				E5D0395E1B601868003A241A /* MimeTypes.swift in Sources */,
-				E5D0395F1B601868003A241A /* Server.swift in Sources */,
+				E5D0395F1B601868003A241A /* HttpServer.swift in Sources */,
 				E5D0395B1B601868003A241A /* HttpRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

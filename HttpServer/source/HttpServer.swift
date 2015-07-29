@@ -20,7 +20,7 @@ func toUnsafeMutablePointer<T,S> (inPointer : UnsafePointer<T>) -> UnsafeMutable
 
 public typealias HttpRequestListener = ((request: HttpRequest, response: HttpResponse) throws -> ());
 
-public class Server: Socket {
+public class HttpServer: Socket {
     
     var delegate: HttpRequestListener;
     
@@ -80,11 +80,12 @@ public class Server: Socket {
             let response = HttpResponse(clientSocket: clientSocket)
             
             request.readData()
+			
             try! self.delegate(request: request, response: response)
             
             response.mimeType = MimeType(ext: request.url?.pathExtension) ?? MimeType.html
             
-            response.writeData()
+            response.writeData(request.fields["Accept-Encoding"]?.rangeOfString("deflate") != nil)
         }
     }
     

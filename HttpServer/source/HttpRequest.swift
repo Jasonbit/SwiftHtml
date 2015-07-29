@@ -19,6 +19,8 @@ public class HttpRequest {
     public var httpMethod: HttpMethod?
     public var url: String?
     public var version: Float?
+	
+	public var fields = [String:String]()
     
     init(clientSocket: Socket) {
         
@@ -30,7 +32,8 @@ public class HttpRequest {
         var sendData = [UInt32](count: Socket.Const.MaxReceiveSize, repeatedValue: 0)
         let count = read(clientSocket.handle, &sendData, Socket.Const.MaxReceiveSize)
         let requestString: String = NSString(bytes: sendData, length: count, encoding: NSASCIIStringEncoding)! as String
-        let strLines = requestString.stringByReplacingOccurrencesOfString("\r\n", withString: "\n").componentsSeparatedByString("\n")
+		print(requestString)
+        var strLines = requestString.stringByReplacingOccurrencesOfString("\r\n", withString: "\n").componentsSeparatedByString("\n")
         if strLines.count > 0 {
             let httpHeader = strLines[0].componentsSeparatedByString(" ")
             if httpHeader.count == 3 {
@@ -46,5 +49,12 @@ public class HttpRequest {
                 }
             }
         }
+		strLines.removeAtIndex(0)
+		for strLine in strLines {
+			let components = strLine.componentsSeparatedByString(":")
+			if components.count == 2 {
+				fields[components[0]] = components[1]
+			}
+		}
     }
 }
